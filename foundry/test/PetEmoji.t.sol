@@ -41,6 +41,14 @@ contract PetEmojiTest is DSTest {
     }
 
     // passtime
+    function testPassTime() public {
+        eg.passTime(0);
+        (uint256 elation, uint256 fed_level, uint256 entertained_level, , ) = pe
+            .petEmojiStats(0);
+        assertEq(fed_level, 90);
+        assertEq(entertained_level, 90);
+        assertEq(elation, (90 + 90) / 2);
+    }   
 
     // feed
 
