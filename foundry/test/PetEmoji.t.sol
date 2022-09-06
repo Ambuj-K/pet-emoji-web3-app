@@ -33,16 +33,16 @@ contract PetEmojiTest is DSTest {
             uint entertained_level, 
             uint checked, 
             string memory image
-        ) = pe.petStats(0);
-        assertEq(elation, (food_level + boredom_level) / 2);
-        assertEq(food_level, 100);
+        ) = pe.petEmojiStats(0);
+        assertEq(elation, (fed_level + entertained_level) / 2);
+        assertEq(fed_level, 100);
         assertEq(entertained_level, 100);
         assertEq(checked, block.timestamp);
     }
 
     // passtime
     function testPassTime() public {
-        eg.passTime(0);
+        pe.passTime(0);
         (uint256 elation, uint256 fed_level, uint256 entertained_level, , ) = pe
             .petEmojiStats(0);
         assertEq(fed_level, 90);
