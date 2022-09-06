@@ -34,7 +34,7 @@ contract PetEmojiTest is DSTest {
             uint checked, 
             string memory image
         ) = pe.petStats(0);
-        assertEq(happiness, (food_level + boredom_level) / 2);
+        assertEq(elation, (food_level + boredom_level) / 2);
         assertEq(food_level, 100);
         assertEq(entertained_level, 100);
         assertEq(checked, block.timestamp);
