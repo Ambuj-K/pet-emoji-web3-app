@@ -15,7 +15,7 @@ contract PetEmoji is ERC721, ERC721URIStorage {
     );
 
     struct PetEmojiAttributes {
-        uint256 gotchiIndex;
+        uint256 petEmojiIndex;
         string imageURI;
         uint256 elation;
         uint256 fed_level;
@@ -53,7 +53,7 @@ contract PetEmoji is ERC721, ERC721URIStorage {
             abi.encodePacked(SVGBase, emojiBase64[0])
         );
         petEmojiHolderAttributes[tokenId] = PetEmojiAttributes({
-            gotchiIndex: tokenId,
+            petEmojiIndex: tokenId,
             imageURI: finalSVG,
             elation: 100,
             fed_level: 100,
