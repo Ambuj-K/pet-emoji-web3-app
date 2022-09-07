@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity >=0.8.9;
 
 import "forge-std/Test.sol";
 import "../src/PetEmoji.sol";
+import "forge-std/console.sol";
 
 contract PetEmojiTest is DSTest {
     PetEmoji public pe;
@@ -51,10 +52,37 @@ contract PetEmojiTest is DSTest {
     }   
 
     // feed
+    function testFeed() public {
+        pe.passTime(0);
+        pe.feed();
+        (uint256 elation, uint256 fed_level, , , ) = pe.petEmojiStats(0);
+        assertEq(fed_level, 100);
+        assertEq(elation, (100 + 90) / 2);
+    }
 
     // play
+    function testPlay() public {
+        pe.passTime(0);
+        pe.play();
+        (uint256 elation, , uint256 entertained_level, , ) = pe.petEmojiStats(0);
+        assertEq(entertained_level, 100);
+        assertEq(elation, (90 + 100) / 2);
+    }
 
     // image
+    function testImgURI() public {
+        string memory tokenURI = "";
+        (, , , , tokenURI) = pe.petEmojiStats(0);
+        string memory firstURI = tokenURI;
+        pe.passTime(0);
+        pe.passTime(0);
+        pe.passTime(0);
+        (, , , , tokenURI) = pe.petEmojiStats(0);
+        string memory secondURI = tokenURI;
+        console.log(secondURI);
+        console.log(firstURI);
+        assertTrue(compareStringsNot(firstURI, secondURI));
+    }
 
     // check upkeep
 

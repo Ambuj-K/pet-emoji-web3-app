@@ -84,6 +84,64 @@ contract PetEmoji is ERC721, ERC721URIStorage {
         );
     }
 
+
+    function myPetEmoji()
+        public
+        view
+        returns (
+            uint256,
+            uint256,
+            uint256,
+            uint256,
+            string memory
+        )
+    {
+        return petEmojiStats(petEmojiHolders[msg.sender]);
+    }
+
+    function passTime(uint256 _tokenId) public {
+        petEmojiHolderAttributes[_tokenId].fed_level =
+            petEmojiHolderAttributes[_tokenId].fed_level -
+            10;
+        petEmojiHolderAttributes[_tokenId].entertained_level =
+            petEmojiHolderAttributes[_tokenId].entertained_level -
+            10;
+        petEmojiHolderAttributes[_tokenId].elation =
+            (petEmojiHolderAttributes[_tokenId].fed_level +
+                petEmojiHolderAttributes[_tokenId].entertained_level) /
+            2;
+        updateURI(_tokenId);
+        emitUpdate(_tokenId);
+    }
+    
+    function emitUpdate(uint256 _tokenId) internal {
+        emit EmojiUpdated(
+            petEmojiHolderAttributes[_tokenId].elation,
+            petEmojiHolderAttributes[_tokenId].fed_level,
+            petEmojiHolderAttributes[_tokenId].entertained_level,
+            petEmojiHolderAttributes[_tokenId].lastChecked,
+            petEmojiHolderAttributes[_tokenId].imageURI,
+            _tokenId
+        );
+    }
+
+    function updateURI(uint256 _tokenId) private {
+        string memory emojiB64 = emojiBase64[0];
+        if (petEmojiHolderAttributes[_tokenId].elation == 100) {
+            emojiB64 = emojiBase64[0];
+        } else if (petEmojiHolderAttributes[_tokenId].elation > 66) {
+            emojiB64 = emojiBase64[1];
+        } else if (petEmojiHolderAttributes[_tokenId].elation > 33) {
+            emojiB64 = emojiBase64[2];
+        } else if (petEmojiHolderAttributes[_tokenId].elation > 0) {
+            emojiB64 = emojiBase64[3];
+        } else if (petEmojiHolderAttributes[_tokenId].elation == 0) {
+            emojiB64 = emojiBase64[4];
+        }
+        string memory finalSVG = string(abi.encodePacked(SVGBase, emojiB64));
+        petEmojiHolderAttributes[_tokenId].imageURI = finalSVG;
+        _setTokenURI(_tokenId, tokenURI(_tokenId));
+    }
     // The following functions are overrides required by Solidity.
 
     function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
