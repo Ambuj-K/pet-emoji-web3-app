@@ -84,7 +84,6 @@ contract PetEmoji is ERC721, ERC721URIStorage {
         );
     }
 
-
     function myPetEmoji()
         public
         view
@@ -141,6 +140,35 @@ contract PetEmoji is ERC721, ERC721URIStorage {
         string memory finalSVG = string(abi.encodePacked(SVGBase, emojiB64));
         petEmojiHolderAttributes[_tokenId].imageURI = finalSVG;
         _setTokenURI(_tokenId, tokenURI(_tokenId));
+    }
+
+    function feed() public {
+        // retrieve the token based on the sender. 
+        uint256 _tokenId = petEmojiHolders[msg.sender];
+        // update fed_level
+        petEmojiHolderAttributes[_tokenId].fed_level = 100;
+        // recalculate elation
+        petEmojiHolderAttributes[_tokenId].elation =
+        (petEmojiHolderAttributes[_tokenId].fed_level +
+            petEmojiHolderAttributes[_tokenId].entertained_level) /
+        2;
+        // update the URI based on new attributes
+        updateURI(_tokenId);
+    }
+
+    function play() public {
+        // retrieve the token based on the sender. 
+        uint256 _tokenId = petEmojiHolders[msg.sender];
+        // update entertained_level
+        petEmojiHolderAttributes[_tokenId].entertained_level = 100;
+        // recalculate elation
+        petEmojiHolderAttributes[_tokenId].elation =
+        (petEmojiHolderAttributes[_tokenId].fed_level +
+            petEmojiHolderAttributes[_tokenId].entertained_level) /
+        2;
+        // update the URI based on new attributes
+        updateURI(_tokenId);
+
     }
     // The following functions are overrides required by Solidity.
 

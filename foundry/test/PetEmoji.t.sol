@@ -3,7 +3,6 @@ pragma solidity >=0.8.9;
 
 import "forge-std/Test.sol";
 import "../src/PetEmoji.sol";
-import "forge-std/console.sol";
 
 contract PetEmojiTest is DSTest {
     PetEmoji public pe;
@@ -87,5 +86,9 @@ contract PetEmojiTest is DSTest {
     // check upkeep
 
     //  perform upkeep 
+
+    function compareStringsNot(string memory a, string memory b) public pure returns (bool) {
+        return (keccak256(abi.encodePacked((a))) != keccak256(abi.encodePacked((b))));
+    }
 
 }
