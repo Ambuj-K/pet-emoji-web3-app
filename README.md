@@ -5,4 +5,4 @@ Primary backend - Done ✅
 
 Primary frontend and animations checks - Work in Progress
 
-Wroking demo link - Work in Progress
+Demo link - Work in Progress
