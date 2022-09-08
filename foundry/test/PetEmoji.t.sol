@@ -4,7 +4,13 @@ pragma solidity >=0.8.9;
 import "forge-std/Test.sol";
 import "../src/PetEmoji.sol";
 
+interface CheatCodes {
+    function warp(uint256) external;
+}
+
 contract PetEmojiTest is DSTest {
+    CheatCodes constant cheats = CheatCodes(HEVM_ADDRESS);
+
     PetEmoji public pe;
     //run before every test
     // - assign contract
@@ -84,8 +90,15 @@ contract PetEmojiTest is DSTest {
     }
 
     // check upkeep
-
-    //  perform upkeep 
+    function testUpkeep() public {
+        bytes memory data = "";
+        bool upkeepNeeded = false;
+        (upkeepNeeded, ) = pe.checkUpkeep(data);
+        assertTrue(upkeepNeeded == false);
+        cheats.warp(block.timestamp + 100);
+        (upkeepNeeded, ) = pe.checkUpkeep(data);
+        assertTrue(upkeepNeeded);
+    }
 
     function compareStringsNot(string memory a, string memory b) public pure returns (bool) {
         return (keccak256(abi.encodePacked((a))) != keccak256(abi.encodePacked((b))));
