@@ -3,4 +3,6 @@ Feed and have your emoji pet react to your actions.
 
 Primary backend - Done ✅
 
-Work in progress
+Primary frontend and animations checks - Work in Progress
+
+Wroking demo link - Work in Progress
