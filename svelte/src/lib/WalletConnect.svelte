@@ -32,11 +32,11 @@
     padding: 20px;
     overflow: hidden;
     position: relative;
-    background-color: wheat;
+    background-color: rgb(179, 245, 200);
     box-shadow: 1px 4px 1px rgba(0,0,0,0.3);
 }
 .bttn {
-        background-color: pink;
+        background-color: rgb(235, 192, 255);
         text-decoration: aqua;
     }
 </style>

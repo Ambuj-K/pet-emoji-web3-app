@@ -43,7 +43,9 @@ contract PetEmoji is ERC721, ERC721URIStorage {
 
     uint256 interval = 60;
 
-    constructor() ERC721("PetEmoji", "pe") {}
+    constructor() ERC721("PetEmoji", "pe") {
+        safeMint(msg.sender);
+    }
 
     function safeMint(address to) public {
         uint256 tokenId = _tokenIdCounter.current();

@@ -1,7 +1,8 @@
 <script>
     import WalletConnect from "../lib/WalletConnect.svelte";
+    import PetEmoji from "../lib/PetEmoji.svelte"
     import contractAbi from "../contracts/PetEmoji.json";
-    const contractAddr =  "0xcD9E77d94e4AB966EFa76c5dE3C4DcdB32B57051";
+    const contractAddr =  "0x825B07Cd76e39569AbEA9467D9ebFA840247563A";
     export let web3Props = {
         provider : null,
         signer : null,
@@ -16,7 +17,7 @@
 {#if !web3Props.account}
 <WalletConnect bind:web3Props {contractAddr} {contractAbi} />
 {:else}
-WIP
+<PetEmoji bind:web3Props />
 {/if}
 
 <style>
@@ -25,7 +26,7 @@ WIP
         padding: 20px;
         overflow: hidden;
         position: relative;
-        background-color: blueviolet;
+        background-color: rgb(214, 226, 43);
         box-shadow: 1px 4px 1px rgba(0,0,0,0.3);
     }
 </style>
