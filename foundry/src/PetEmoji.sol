@@ -156,6 +156,7 @@ contract PetEmoji is ERC721, ERC721URIStorage {
         2;
         // update the URI based on new attributes
         updateURI(_tokenId);
+        emitUpdate(_tokenId);
     }
 
     function play() public {
@@ -170,6 +171,7 @@ contract PetEmoji is ERC721, ERC721URIStorage {
         2;
         // update the URI based on new attributes
         updateURI(_tokenId);
+        emitUpdate(_tokenId);
 
     }
 
