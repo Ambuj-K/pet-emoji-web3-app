@@ -220,7 +220,7 @@ contract PetEmoji is ERC721, ERC721URIStorage {
 
     }
 
-        function checkUpkeep(
+    function checkUpkeep(
         bytes calldata /* checkData */
     )
         external
