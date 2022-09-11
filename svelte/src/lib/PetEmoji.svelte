@@ -44,6 +44,7 @@
     //        status = "LOADED";
     //     });
     // }
+    getPetEmoji();
 </script>
 
 <div class='wrapper'>
@@ -83,7 +84,7 @@
         overflow: hidden;
         position: relative;
         background-color: wheat;
-        box-shadow: 1px 4px 1px rgba(0,0,0,0.3);
+        box-shadow: 1px 4px 1px rgba(0, 0, 0, 0.178);
     }
     .bttn{
         background-color: pink;
@@ -96,33 +97,45 @@
         height: 500px;
     }
     .fed_level{
-        background-color: pink;
+        background-color: rgb(196, 255, 192);
         text-decoration: aqua;
-        width: 100px;
+        width: 200px;
         height: 25px;
         overflow: hidden;
         position: relative;
         text-align: center;
-        text-shadow: 0ex;
+        text-shadow: 10ex;
+        border-radius: 5px;
+        padding: 10px;
+        overflow: hidden;
+        box-shadow: 1px 4px 1px rgba(0,0,0,0.3);
     }
     .elation{
-        background-color: pink;
+        background-color: rgb(200, 192, 255);
         text-decoration: aqua;
-        width: 100px;
+        width: 200px;
         height: 25px;
         overflow: hidden;
         position: relative;
         text-align: center;
-        text-shadow: 0ex;
+        text-shadow: 10ex;
+        border-radius: 5px;
+        padding: 10px;
+        overflow: hidden;
+        box-shadow: 1px 4px 1px rgba(0,0,0,0.3);
     }
     .entertained_level{
-        background-color: pink;
+        background-color: rgb(255, 192, 230);
         text-decoration: aqua;
-        width: 100px;
+        width: 200px;
         height: 25px;
         overflow: hidden;
         position: relative;
         text-align: center;
-        text-shadow: 0ex;
+        text-shadow: 10ex;
+        border-radius: 5px;
+        padding: 10px;
+        overflow: hidden;
+        box-shadow: 1px 4px 1px rgba(0,0,0,0.3);
     }
 </style>
