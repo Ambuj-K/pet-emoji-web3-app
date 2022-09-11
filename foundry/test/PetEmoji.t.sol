@@ -90,7 +90,7 @@ contract PetEmojiTest is DSTest {
     }
 
     // check upkeep
-    function testUpkeep() public {
+    function testCheckUpkeep() public {
         bytes memory data = "";
         bool upkeepNeeded = false;
         (upkeepNeeded, ) = pe.checkUpkeep(data);
@@ -100,6 +100,19 @@ contract PetEmojiTest is DSTest {
         assertTrue(upkeepNeeded);
     }
 
+    // perform upkeep
+    function testPerformUpkeep() public {
+        bytes memory data = "";
+        cheats.warp(block.timestamp + 100);
+        pe.performUpkeep(data);
+        (uint256 elation, uint256 fed_level, uint256 entertained_level, , ) = pe
+            .petEmojiStats(0);
+        assertEq(fed_level, 90);
+        assertEq(entertained_level, 90);
+        assertEq(elation, (90 + 90) / 2);
+    }
+
+    // string compare
     function compareStringsNot(string memory a, string memory b) public pure returns (bool) {
         return (keccak256(abi.encodePacked((a))) != keccak256(abi.encodePacked((b))));
     }

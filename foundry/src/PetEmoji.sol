@@ -3,8 +3,9 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@chainlink/contracts/src/v0.8/KeeperCompatible.sol";
 
-contract PetEmoji is ERC721, ERC721URIStorage {
+contract PetEmoji is ERC721, ERC721URIStorage, KeeperCompatibleInterface {
     event EmojiUpdated(
         uint256 elation,
         uint256 fed_level,
