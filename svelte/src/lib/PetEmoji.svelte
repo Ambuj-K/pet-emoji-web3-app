@@ -53,10 +53,10 @@
         fed_level: {fed_level}
     </div>
     <div class = 'entertained_level'>
-        entertained_level: {entertained_level}
+        entertained: {entertained_level}
     </div>
     <div class = 'elation'>
-        entertained_level: {elation}
+        happiness: {elation}
     </div>
     <!-- {#if !NFT_json & status!="MINTING..."}
     <button class='bttn' on:click={Mint}>Mint An NFT</button>
