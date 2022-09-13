@@ -29,6 +29,14 @@
         });
     };
 
+    const feedPetEmoji = async() => {
+        await web3Props.contract.feed()
+    }
+
+    const entertainPetEmoji = async() => {
+        await web3Props.contract.play()
+    }
+
     // async function Mint() {
     //     status = "MINTING...";
     //     await web3Props.contract.requestNft({
@@ -51,9 +59,13 @@
     <img class="image_div" src={image} alt="Loading..."/>
     <div class = 'fed_level'>
         fed_level: {fed_level}
+        <br/>
+        <button class='bttn' on:click={feedPetEmoji}>Feed</button>
     </div>
     <div class = 'entertained_level'>
         entertained: {entertained_level}
+        <br/>
+        <button class='bttn' on:click={entertainPetEmoji}>Play</button>
     </div>
     <div class = 'elation'>
         happiness: {elation}
@@ -100,7 +112,7 @@
         background-color: rgb(196, 255, 192);
         text-decoration: aqua;
         width: 200px;
-        height: 25px;
+        height: 40px;
         overflow: hidden;
         position: relative;
         text-align: center;
@@ -128,7 +140,7 @@
         background-color: rgb(255, 192, 230);
         text-decoration: aqua;
         width: 200px;
-        height: 25px;
+        height: 40px;
         overflow: hidden;
         position: relative;
         text-align: center;

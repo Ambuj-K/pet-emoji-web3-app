@@ -2,7 +2,7 @@
     import WalletConnect from "../lib/WalletConnect.svelte";
     import PetEmoji from "../lib/PetEmoji.svelte"
     import contractAbi from "../contracts/PetEmoji.json";
-    const contractAddr =  "0x839D42aDe513ac97c49dE7e81017B3E95A7cc8CF";
+    const contractAddr =  "0x13A6bd54904bc52Cc077Ec321722bF9bfCBb21DD";
     export let web3Props = {
         provider : null,
         signer : null,
@@ -12,7 +12,7 @@
 </script>
 
 <div class="OUTER">
-<h1>Welcome to Your Pet Emoji</h1>
+<h1>Play with Your Pet Emoji</h1>
 </div>
 {#if !web3Props.account}
 <WalletConnect bind:web3Props {contractAddr} {contractAbi} />
