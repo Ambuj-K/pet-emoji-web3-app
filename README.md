@@ -1,10 +1,13 @@
 # pet-emoji-web3-app
 Feed and have your emoji pet react to your actions.
+
 Uses Chainlink Keepers to update emoji mood.
 
 Primary backend with svg emojis on chain - Done ✅
 
 Primary frontend and animations checks - Done ✅
+
+SVG chain based images for moods.
 
 Demo link - [Pet Emoji](https://petemojisvgapp.ambujkumar4.repl.co/)
 
